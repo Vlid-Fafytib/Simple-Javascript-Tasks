@@ -100,3 +100,21 @@
 
 // Lists END 
 
+// Functions
+// function greaterThan(n) {
+//     return function(m) { return m > n; };
+// }
+// var greaterThan10 = greaterThan(12);
+// console.log(greaterThan10(11)); //False 
+
+function noisy(f) {
+    return function (arg) {
+        console.log("calling with", arg);
+        var val = f(arg);
+        console.log("called with", arg, "-got", val);
+        return val;
+    };
+}
+
+noisy(Boolean)(""); // false
+// Functions END
