@@ -107,14 +107,51 @@
 // var greaterThan10 = greaterThan(12);
 // console.log(greaterThan10(11)); //False 
 
-function noisy(f) {
-    return function (arg) {
-        console.log("calling with", arg);
-        var val = f(arg);
-        console.log("called with", arg, "-got", val);
-        return val;
-    };
-}
+// function noisy(f) {
+//     return function (arg) {
+//         console.log("calling with", arg);
+//         var val = f(arg);
+//         console.log("called with", arg, "-got", val);
+//         return val;
+//     };
+// }
 
-noisy(Boolean)(""); // false
+// noisy(Boolean)(""); // false
+
+// forEach
+
+// var even = 0;
+// var odd = 0;
+// var arr = [1, 12, 24, 532, 223, 3332, 2, 5532, 400031];
+
+// arr.forEach(element => {
+//     if (element % 2 == 0){
+//         even++;
+//     } else{
+//         odd++;
+//     }
+// });
+
+// console.log("Even numbers = " + even + "    " + "Odd numbers = " + odd);
+
+//Filter
+
+// var arr = [1, 3, 56, 342, 647, 236, 0, 2];
+
+// var arrEvens = arr.filter(function (num) {
+//    if (num % 2 == 0){
+//        return num;
+//    } 
+// });
+
+// console.log(arrEvens);
+
+//MAP
+// var bench = [1, 2, 3, 4, 6];
+// console.log(benchReverse = bench.map(function(item, i){
+//     return bench[bench.length - i -1];
+// }));
+
+//Reduse
+
 // Functions END
