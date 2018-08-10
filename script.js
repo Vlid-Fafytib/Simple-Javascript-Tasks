@@ -154,4 +154,26 @@
 
 //Reduse
 
+// var arr = [1, 2, 3, 4, 5]
+// // для каждого элемента массива запустить функцию,
+// // промежуточный результат передавать первым аргументом далее
+// var result = arr.reduce(function(sum, current) {
+//   return sum + current;
+// }, 0);
+
+// alert( result ); // 15
+
+// //Closures/ Замыкания
+// var c = 5
+// const addX = x => n => n + x 
+// const addThree = addX(3)
+// var d = addThree(c)
+// console.log('example partial application', d) // 8 
+
+//Concat and reduce
+
+var arrays = [[1, 2, 3], [4, 5], [6]];
+const reducer = (prev, cur) => prev.concat(cur);
+console.log(arrays.reduce(reducer));
+
 // Functions END
