@@ -172,8 +172,31 @@
 
 //Concat and reduce
 
-var arrays = [[1, 2, 3], [4, 5], [6]];
-const reducer = (prev, cur) => prev.concat(cur);
-console.log(arrays.reduce(reducer));
+// var arrays = [[1, 2, 3], [4, 5], [6]];
+// const reducer = (prev, cur) => prev.concat(cur);
+// console.log(arrays.reduce(reducer));
 
+// EVERY/SOME
+
+// let arr = [2, 3, NaN];
+// function istNaN(elem) {
+//     return isNaN(elem); //Эта программа показывает работу every and some проверкой на NaN
+// }
+
+// console.log(arr.every(istNaN));
+// console.log(arr.some(istNaN));
+
+//classes and prototypes
+
+// function Human(name, age) {
+//     this.age = age;
+//     this.name = name;
+// }
+
+// Human.prototype.speak = function (line, line2) { //Create prototype
+//     console.log(line + this.name + line2 + this.age);
+// }
+
+// let people = [new Human("Andrew", 24), new Human("Lara", 12), new Human("Dave", 25)];
+// people[2].speak("My name is ", " and i`m ");
 // Functions END
