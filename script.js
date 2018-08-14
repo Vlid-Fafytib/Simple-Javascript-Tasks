@@ -199,4 +199,30 @@
 
 // let people = [new Human("Andrew", 24), new Human("Lara", 12), new Human("Dave", 25)];
 // people[2].speak("My name is ", " and i`m ");
+
+// function man(type) {
+//     this.type = type;
+// }
+// man.prototype.teeth = "Clear";
+// let Stas =  new man("black");
+// Stas.teeth = "Not Clear";
+// alert(Stas.teeth);
+// alert(man.prototype.teeth);
+// let Artem = new man ("asian");
+// alert(Artem.teeth);
+// Перегрузка свойств
+
+let Human = function (name, age, height, weight) {
+    this.age = age;
+    this.name = name;
+    this.height = height;
+    this.weight = weight;
+}
+
+Human.prototype.inf = function () {
+    console.log("My name is - " + this.name + "\nI am " + this.age + " old\nMy height - "+ this.height + " sm\nMy weight - " + this.weight + " kg.");
+}
+let arr = [];
+arr.push(new Human("Vlid", 23, 190, 80));
+arr[0].inf(); // Classes trying
 // Functions END
