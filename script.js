@@ -211,18 +211,119 @@
 // let Artem = new man ("asian");
 // alert(Artem.teeth);
 // Перегрузка свойств
+// Classes trying
+// let Human = function (name, age, height, weight) {
+//     this.age = age;
+//     this.name = name;
+//     this.height = height;
+//     this.weight = weight;
+// }
 
-let Human = function (name, age, height, weight) {
-    this.age = age;
-    this.name = name;
-    this.height = height;
-    this.weight = weight;
+// Human.prototype.inf = function () {
+//     console.log("My name is - " + this.name + "\nI am " + this.age + " old\nMy height - "+ this.height + " sm\nMy weight - " + this.weight + " kg.");
+// }
+// let arr = [];
+// arr.push(new Human("Vlid", 23, 190, 80));
+// arr[0].inf(); 
+// Task Vector
+// function Vector(x, y){
+//     this.x = x;
+//     this.y = y;
+// }
+
+// Vector.prototype.plus = function (vector) {
+//     let X = this.x + vector.x;
+//     let Y = this.y + vector.y;
+//     return "Vector: x = " + X + "\nVector: y = " + Y;
+// }
+
+// Vector.prototype.minus = function (vector) {
+//     let X = this.x - vector.x;
+//     let Y = this.y - vector.y;
+//     return "Vector: x = " + X + "\nVector: y = " + Y;
+// }
+
+// console.log(new Vector(1, 2).plus(new Vector(2 , 3)));
+// console.log(new Vector(1, 2).minus(new Vector(2 , 3)));
+
+
+// stretch cell
+
+// function StrethCell(text, width, heigth) {
+//     this.text = text;
+//     this.width = width;
+//     this.heigth = heigth;
+// }
+
+// StrethCell.prototype.minHeight = function () {
+//     return this.heigth;
+// }
+
+// StrethCell.prototype.minWidth = function () {
+//     return this.text.length;
+// }
+
+// StrethCell.prototype.draw = function(w, h){
+//     let line = " ";
+//     let line2 = "";
+//     let arr = [];
+
+//     for (let i = 0; i < h; i++) {
+//         for (let j = 0; j < w; j++) {
+//             if (i == 0) {
+//                 arr.push(this.text);
+//                 break;
+//             }else {
+//                 line2 += line;
+//                 arr[i] = line2;
+//             }
+//         }
+//         line2 = "";
+//     }
+//     return arr;
+// }
+
+// a = new StrethCell("Vlidich", 1, 3);
+// console.log(a.draw(a.minWidth(), a.minHeight()));
+// Программа высчитывает сколько нужно создать ячеек массива. Учитывает текст каоторый задан в начале и все ячейки будут такого же размера как и размер текста.
+
+
+function ArraySeq(arr){
+    this.arr = arr;
 }
 
-Human.prototype.inf = function () {
-    console.log("My name is - " + this.name + "\nI am " + this.age + " old\nMy height - "+ this.height + " sm\nMy weight - " + this.weight + " kg.");
+function RangeSeq(from, to) {
+    this.from = from;
+    this.to = to;
 }
-let arr = [];
-arr.push(new Human("Vlid", 23, 190, 80));
-arr[0].inf(); // Classes trying
-// Functions END
+
+function logFive(Array) {
+    let j = 0;
+    if (Array.from != undefined && Array.to <= 5) {
+        for (let i = Array.from; i <= Array.to; i++) {
+            console.log(i);
+        }
+    } else if (Array.from != 0 && Array.to > 5){
+        for (let i = Array.from; i <= Array.to; i++) {
+            console.log(i);
+            j++;
+            if (j == 5) {
+                break;
+            }
+        }
+    } else if (Array.arr[0] != undefined && Array.arr.length <=5) { 
+        for (let i = 0; i < Array.arr.length; i++){
+            console.log(Array.arr[i]);
+        }
+    } else if (Array.arr.length > 5){
+        for (let i = 0; i < 5; i++){
+            console.log(Array.arr[i]);
+        }
+    }
+     else{
+        return "So bad for you";
+    }
+}
+
+console.log(logFive(new RangeSeq (100 , 1000)));
+// Functions END  ArraySeq([1, 4, 2, 5, 2, 3])
