@@ -288,42 +288,94 @@
 // Программа высчитывает сколько нужно создать ячеек массива. Учитывает текст каоторый задан в начале и все ячейки будут такого же размера как и размер текста.
 
 
-function ArraySeq(arr){
-    this.arr = arr;
+// function ArraySeq(arr){
+//     this.arr = arr;
+// }
+
+// function RangeSeq(from, to) {
+//     this.from = from;
+//     this.to = to;
+// }
+
+// function logFive(Array) {
+//     let j = 0;
+//     if (Array.from != undefined && Array.to <= 5) {
+//         for (let i = Array.from; i <= Array.to; i++) {
+//             console.log(i);
+//         }
+//     } else if (Array.from != 0 && Array.to > 5){
+//         for (let i = Array.from; i <= Array.to; i++) {
+//             console.log(i);
+//             j++;
+//             if (j == 5) {
+//                 break;
+//             }
+//         }
+//     } else if (Array.arr[0] != undefined && Array.arr.length <=5) { 
+//         for (let i = 0; i < Array.arr.length; i++){
+//             console.log(Array.arr[i]);
+//         }
+//     } else if (Array.arr.length > 5){
+//         for (let i = 0; i < 5; i++){
+//             console.log(Array.arr[i]);
+//         }
+//     }
+//      else{
+//         return "So bad for you";
+//     }
+// }
+
+// console.log(logFive(new RangeSeq (100 , 1000)));
+
+//my own language
+
+function parseExpression(program) {
+    program = skipSpace(program);
+    var match, expr;
+    if (match = /^"([^"]*)"/.exec(program))
+        expr = {type: "value", value: match[1]};
+    else if (match = /^\d+\b/.exec(program))
+        expr = {type: "value", value: Number(match[0])};
+    else if (match = /^[^\s(),"]+/.exec(program))
+        expr = {type: "word", name: match[0]};
+    else
+        throw new SyntaxError("Неожиданный синтаксис: " + program);
+    return parseApply(expr, program.slice(match[0].length));    
 }
 
-function RangeSeq(from, to) {
-    this.from = from;
-    this.to = to;
+function skipSpace(string) {
+    var first = string.search(/\S/);
+    if (first == -1) {
+        return "";
+    }
+    return string.slice(first);
 }
 
-function logFive(Array) {
-    let j = 0;
-    if (Array.from != undefined && Array.to <= 5) {
-        for (let i = Array.from; i <= Array.to; i++) {
-            console.log(i);
-        }
-    } else if (Array.from != 0 && Array.to > 5){
-        for (let i = Array.from; i <= Array.to; i++) {
-            console.log(i);
-            j++;
-            if (j == 5) {
-                break;
-            }
-        }
-    } else if (Array.arr[0] != undefined && Array.arr.length <=5) { 
-        for (let i = 0; i < Array.arr.length; i++){
-            console.log(Array.arr[i]);
-        }
-    } else if (Array.arr.length > 5){
-        for (let i = 0; i < 5; i++){
-            console.log(Array.arr[i]);
+function parseApply(expr, program) {
+    program = skipSpace(program);
+    if (program[0] != "("){
+        return {expr: expr, rest: program};
+    }
+    program = skipSpace(program.slice(1));
+    expr = {type: "apply", operator: expr, args: []};
+    while (program[0] != ")") {
+        var arg = parseExpression(program);
+        expr.args.push(arg.rest);
+        if (program[0] == ",") {
+            program = skipSpace(program.slice(1));
+        } else if (program[0] != ")") {
+            throw new SyntaxError("Ожидается ',' or ')'");        
         }
     }
-     else{
-        return "So bad for you";
-    }
+    return parseApply(expr, program.slice(1));
 }
 
-console.log(logFive(new RangeSeq (100 , 1000)));
-// Functions END  ArraySeq([1, 4, 2, 5, 2, 3])
+function parse(program) {
+    var result = parseExpression(program);
+    if (skipSpace(result.rest).length > 0){
+        throw new SyntaxError("Неожиданно текст после программы");
+    }
+    return result.expr;
+}
+
+console.log(parse("("+a, 10+")";
