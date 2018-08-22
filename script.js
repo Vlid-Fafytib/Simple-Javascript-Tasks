@@ -329,53 +329,74 @@
 
 //my own language
 
-function parseExpression(program) {
-    program = skipSpace(program);
-    var match, expr;
-    if (match = /^"([^"]*)"/.exec(program))
-        expr = {type: "value", value: match[1]};
-    else if (match = /^\d+\b/.exec(program))
-        expr = {type: "value", value: Number(match[0])};
-    else if (match = /^[^\s(),"]+/.exec(program))
-        expr = {type: "word", name: match[0]};
-    else
-        throw new SyntaxError("Неожиданный синтаксис: " + program);
-    return parseApply(expr, program.slice(match[0].length));    
-}
+// function parseExpression(program) {
+//     program = skipSpace(program);
+//     var match, expr;
+//     if (match = /^"([^"]*)"/.exec(program))
+//         expr = {type: "value", value: match[1]};
+//     else if (match = /^\d+\b/.exec(program))
+//         expr = {type: "value", value: Number(match[0])};
+//     else if (match = /^[^\s(),"]+/.exec(program))
+//         expr = {type: "word", name: match[0]};
+//     else
+//         throw new SyntaxError("Неожиданный синтаксис: " + program);
+//     return parseApply(expr, program.slice(match[0].length));    
+// }
 
-function skipSpace(string) {
-    var first = string.search(/\S/);
-    if (first == -1) {
-        return "";
-    }
-    return string.slice(first);
-}
+// function skipSpace(string) {
+//     var first = string.search(/\S/);
+//     if (first == -1) {
+//         return "";
+//     }
+//     return string.slice(first);
+// }
 
-function parseApply(expr, program) {
-    program = skipSpace(program);
-    if (program[0] != "("){
-        return {expr: expr, rest: program};
-    }
-    program = skipSpace(program.slice(1));
-    expr = {type: "apply", operator: expr, args: []};
-    while (program[0] != ")") {
-        var arg = parseExpression(program);
-        expr.args.push(arg.rest);
-        if (program[0] == ",") {
-            program = skipSpace(program.slice(1));
-        } else if (program[0] != ")") {
-            throw new SyntaxError("Ожидается ',' or ')'");        
+// function parseApply(expr, program) {
+//     program = skipSpace(program);
+//     if (program[0] != "("){
+//         return {expr: expr, rest: program};
+//     }
+//     program = skipSpace(program.slice(1));
+//     expr = {type: "apply", operator: expr, args: []};
+//     while (program[0] != ")") {
+//         var arg = parseExpression(program);
+//         expr.args.push(arg.rest);
+//         if (program[0] == ",") {
+//             program = skipSpace(program.slice(1));
+//         } else if (program[0] != ")") {
+//             throw new SyntaxError("Ожидается ',' or ')'");        
+//         }
+//     }
+//     return parseApply(expr, program.slice(1));
+// }
+
+// function parse(program) {
+//     var result = parseExpression(program);
+//     if (skipSpace(result.rest).length > 0){
+//         throw new SyntaxError("Неожиданно текст после программы");
+//     }
+//     return result.expr;
+// }
+
+// console.log(parse("("+a, 10+")";
+// DOM
+function buildTable(data) {
+    let tablet = document.createElement("table");
+    let str = "";
+    let h = 0;
+    let foo = data.length/3;
+    for (let j = 0; j < 3; j++){
+        str += "<tr>";
+        for (let i = 0; i < foo; i++){
+            str += "<td>"+ data[h] +"</td>";
+            h++;
         }
+        str += "</tr>";
     }
-    return parseApply(expr, program.slice(1));
+    tablet.innerHTML = str;
+    return tablet;
 }
+let arr = ["Привет","Как дела","Жопа","Лол", "Мама", "Папа", "Влад", "Валя", "Валaaas"];
+let parrentElem = document.body;
 
-function parse(program) {
-    var result = parseExpression(program);
-    if (skipSpace(result.rest).length > 0){
-        throw new SyntaxError("Неожиданно текст после программы");
-    }
-    return result.expr;
-}
-
-console.log(parse("("+a, 10+")";
+parrentElem.appendChild(buildTable(arr));

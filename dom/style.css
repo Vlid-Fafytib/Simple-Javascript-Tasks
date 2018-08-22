@@ -1,0 +1,37 @@
+ #slides{
+    position: relative;
+    height: 300px;
+    padding: 0px;
+    margin: 0px;
+    list-style-type: none;
+}
+
+.slide{
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 200px;
+    height: 300px;
+    opacity: 0;
+    z-index: 1;
+    transition: opacity 1s;
+}
+
+.showing{
+    opacity: 1;
+    z-index: 2;
+}
+
+
+.button{
+    width: 100px;
+    background-color: green;
+    position: absolute;
+    top: 700px;
+    height: 40px;
+    padding: 1% 1% 0 3%;
+}
+
+#but2{
+    left: 200px;
+}
