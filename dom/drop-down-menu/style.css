@@ -1,0 +1,53 @@
+/* .menu-item {
+    border: 2px solid red;
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+}
+.menu-item .submenu {
+    width: 150px;
+    background: greenyellow;
+    display: none;
+    position: absolute;
+    cursor: pointer;
+} */
+
+#nav {
+  padding: 20px 0;
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+.menu li a {
+  display: block;
+  padding: 10px 30px;
+}
+
+.menu li {
+  background-color: #ddd;
+}
+
+.menu-item {
+  margin-right: 2px;
+  position: relative;
+}
+
+.menu {
+  display: flex;
+}
+
+.submenu {
+  position: absolute;
+  display: none;
+  left: -10px;
+}
+
+.submenu-item {
+  margin-top: 1px;
+}

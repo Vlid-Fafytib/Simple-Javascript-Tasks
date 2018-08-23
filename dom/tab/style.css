@@ -1,0 +1,23 @@
+.tabs{
+    background-color: #cecece;
+    width: 100%;
+    height: 100px;
+    display: flex;
+    flex-direction: row;
+
+}
+
+.tabs button{
+    flex: 1;
+    font-size: 30pt;
+    cursor: pointer;
+}
+
+.tabcontent{
+    width: 100%;
+    height:  500px;
+    font-size: 40pt;
+    text-align: center;
+    display: none;
+    transition: 1s;
+}
