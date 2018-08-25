@@ -49,8 +49,8 @@
 // var array = ['1', '2', '3', '4'];
 // console.log(reverseArr2(array));
 
-//reverse array END
-//Lists 
+// reverse array END
+// Lists 
 
 
 // function arrayToList() {            //Превращает значения из параметров в список
@@ -134,7 +134,7 @@
 
 // console.log("Even numbers = " + even + "    " + "Odd numbers = " + odd);
 
-//Filter
+// Filter
 
 // var arr = [1, 3, 56, 342, 647, 236, 0, 2];
 
@@ -146,13 +146,13 @@
 
 // console.log(arrEvens);
 
-//MAP
+// MAP
 // var bench = [1, 2, 3, 4, 6];
 // console.log(benchReverse = bench.map(function(item, i){
 //     return bench[bench.length - i -1];
 // }));
 
-//Reduse
+// Reduse
 
 // var arr = [1, 2, 3, 4, 5]
 // // для каждого элемента массива запустить функцию,
@@ -170,7 +170,7 @@
 // var d = addThree(c)
 // console.log('example partial application', d) // 8 
 
-//Concat and reduce
+// Concat and reduce
 
 // var arrays = [[1, 2, 3], [4, 5], [6]];
 // const reducer = (prev, cur) => prev.concat(cur);
@@ -186,7 +186,7 @@
 // console.log(arr.every(istNaN));
 // console.log(arr.some(istNaN));
 
-//classes and prototypes
+// classes and prototypes
 
 // function Human(name, age) {
 //     this.age = age;
@@ -327,7 +327,7 @@
 
 // console.log(logFive(new RangeSeq (100 , 1000)));
 
-//my own language
+// my own language
 
 // function parseExpression(program) {
 //     program = skipSpace(program);
@@ -380,23 +380,79 @@
 
 // console.log(parse("("+a, 10+")";
 // DOM
-function buildTable(data) {
-    let tablet = document.createElement("table");
-    let str = "";
-    let h = 0;
-    let foo = data.length/3;
-    for (let j = 0; j < 3; j++){
-        str += "<tr>";
-        for (let i = 0; i < foo; i++){
-            str += "<td>"+ data[h] +"</td>";
-            h++;
-        }
-        str += "</tr>";
-    }
-    tablet.innerHTML = str;
-    return tablet;
-}
-let arr = ["Привет","Как дела","Жопа","Лол", "Мама", "Папа", "Влад", "Валя", "Валaaas"];
-let parrentElem = document.body;
+// function buildTable(data) {
+//     let tablet = document.createElement("table");
+//     let str = "";
+//     let h = 0;
+//     let foo = data.length/3;
+//     for (let j = 0; j < 3; j++){
+//         str += "<tr>";
+//         for (let i = 0; i < foo; i++){
+//             str += "<td>"+ data[h] +"</td>";
+//             h++;
+//         }
+//         str += "</tr>";
+//     }
+//     tablet.innerHTML = str;
+//     return tablet;
+// }
+// let arr = ["Привет","Как дела","Беб","Лол", "Мама", "Папа", "Влад", "Валя", "Валaaas"];
+// let parrentElem = document.body;
 
-parrentElem.appendChild(buildTable(arr));
+// parrentElem.appendChild(buildTable(arr));
+
+// var arr = [1, 100];
+// function getAvg(arr){
+//     var sum = 0;
+//     for (let i = arr[0]; i <= arr[1]; i++)
+//     sum += i;
+//     sum = sum / arr[1];
+//     return sum;
+// }
+// console.log(getAvg(arr));
+
+//task
+
+alph = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", 
+"m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
+
+function higths(stroke) {
+    var arr = stroke.split(' ');
+    var arr2 = [];
+    var current= 0;
+    var car = [];
+    for (var i = 0; i < arr.length; i++){
+        car = arr[i].split('');
+        for (var j = 0; j < car.length; j++){
+            for (var h = 0; h < alph.length; h++){
+                if (car[j] === alph[h]) {
+                    car[j] = h+1;
+                }
+            }
+        }
+        for (var k = 0; k < car.length; k++){
+            current += car[k];
+        }
+            arr2.push(current);
+            current = 0;
+        
+    }
+    var temp = 0;
+    for (var t = 0; t < arr2.length; t++){
+        car[t] = arr2[t];
+    }
+    for (var g = 0; g < arr2.length; g++) {
+        for (var m = arr2.length; m > 0; m--) {
+            if (arr2[m] > arr2[m-1]) {
+                temp = arr2[m-1];
+                arr2[m-1] = arr2[m];
+                arr2[m] = temp;
+            }
+        }
+        
+    }
+    return arr[car.indexOf(arr2[0])];
+    
+    
+}
+console.log(higths("vala valb"));

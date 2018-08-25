@@ -8,8 +8,8 @@
 
 .slide{
     position: absolute;
-    left: 0px;
-    top: 0px;
+    left: 650px;
+    top: 150px;
     width: 200px;
     height: 300px;
     opacity: 0;
@@ -25,13 +25,13 @@
 
 .button{
     width: 100px;
-    background-color: green;
     position: absolute;
-    top: 700px;
-    height: 40px;
+    top: 400px;
     padding: 1% 1% 0 3%;
+    left: 450px;
+    z-index: 999;
 }
 
 #but2{
-    left: 200px;
+    left: 1260px;
 }

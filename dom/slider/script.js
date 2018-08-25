@@ -10,11 +10,11 @@ function nextSlide(currentSlide){
 
 var but1 = document.getElementById("but1");
 var but2 = document.getElementById("but2");
-but2.addEventListener("click", function(event){
+but2.addEventListener("click", function(){
     nextSlide();
 });
 
-but1.addEventListener("click", function(event){
+but1.addEventListener("click", function(){
     previousSlide();
 });
 
