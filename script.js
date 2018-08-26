@@ -413,46 +413,68 @@
 
 //task
 
-alph = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", 
-"m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
+// alph = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", 
+// "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
 
-function higths(stroke) {
-    var arr = stroke.split(' ');
-    var arr2 = [];
-    var current= 0;
-    var car = [];
-    for (var i = 0; i < arr.length; i++){
-        car = arr[i].split('');
-        for (var j = 0; j < car.length; j++){
-            for (var h = 0; h < alph.length; h++){
-                if (car[j] === alph[h]) {
-                    car[j] = h+1;
-                }
-            }
-        }
-        for (var k = 0; k < car.length; k++){
-            current += car[k];
-        }
-            arr2.push(current);
-            current = 0;
+// function higths(stroke) {
+//     var arr = stroke.split(' ');
+//     var arr2 = [];
+//     var current= 0;
+//     var car = [];
+//     for (var i = 0; i < arr.length; i++){
+//         car = arr[i].split('');
+//         for (var j = 0; j < car.length; j++){
+//             for (var h = 0; h < alph.length; h++){
+//                 if (car[j] === alph[h]) {
+//                     car[j] = h+1;
+//                 }
+//             }
+//         }
+//         for (var k = 0; k < car.length; k++){
+//             current += car[k];
+//         }
+//             arr2.push(current);
+//             current = 0;
         
-    }
-    var temp = 0;
-    for (var t = 0; t < arr2.length; t++){
-        car[t] = arr2[t];
-    }
-    for (var g = 0; g < arr2.length; g++) {
-        for (var m = arr2.length; m > 0; m--) {
-            if (arr2[m] > arr2[m-1]) {
-                temp = arr2[m-1];
-                arr2[m-1] = arr2[m];
-                arr2[m] = temp;
-            }
-        }
+//     }
+//     var temp = 0;
+//     for (var t = 0; t < arr2.length; t++){
+//         car[t] = arr2[t];
+//     }
+//     for (var g = 0; g < arr2.length; g++) {
+//         for (var m = arr2.length; m > 0; m--) {
+//             if (arr2[m] > arr2[m-1]) {
+//                 temp = arr2[m-1];
+//                 arr2[m-1] = arr2[m];
+//                 arr2[m] = temp;
+//             }
+//         }
         
-    }
-    return arr[car.indexOf(arr2[0])];
+//     }
+//     return arr[car.indexOf(arr2[0])];
     
     
-}
-console.log(higths("vala valb"));
+// }
+// console.log(higths("vala valb"));
+
+
+//some task
+var calculator = {
+    a : 0,
+    b: 0,
+    read: function () {
+        this.a = prompt("a?");
+        this.b = prompt("b?");
+    },
+    sum: function() {
+         alert((this.a*1) + (this.b*1));
+    },
+    mul: function () {
+        alert(this.a * this.b);
+    }
+};
+
+calculator.read();
+calculator.sum();
+calculator.mul();
+
