@@ -413,46 +413,170 @@
 
 //task
 
-alph = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", 
-"m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
+// alph = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", 
+// "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
 
-function higths(stroke) {
-    var arr = stroke.split(' ');
-    var arr2 = [];
-    var current= 0;
-    var car = [];
-    for (var i = 0; i < arr.length; i++){
-        car = arr[i].split('');
-        for (var j = 0; j < car.length; j++){
-            for (var h = 0; h < alph.length; h++){
-                if (car[j] === alph[h]) {
-                    car[j] = h+1;
-                }
-            }
-        }
-        for (var k = 0; k < car.length; k++){
-            current += car[k];
-        }
-            arr2.push(current);
-            current = 0;
+// function higths(stroke) {
+//     var arr = stroke.split(' ');
+//     var arr2 = [];
+//     var current= 0;
+//     var car = [];
+//     for (var i = 0; i < arr.length; i++){
+//         car = arr[i].split('');
+//         for (var j = 0; j < car.length; j++){
+//             for (var h = 0; h < alph.length; h++){
+//                 if (car[j] === alph[h]) {
+//                     car[j] = h+1;
+//                 }
+//             }
+//         }
+//         for (var k = 0; k < car.length; k++){
+//             current += car[k];
+//         }
+//             arr2.push(current);
+//             current = 0;
         
-    }
-    var temp = 0;
-    for (var t = 0; t < arr2.length; t++){
-        car[t] = arr2[t];
-    }
-    for (var g = 0; g < arr2.length; g++) {
-        for (var m = arr2.length; m > 0; m--) {
-            if (arr2[m] > arr2[m-1]) {
-                temp = arr2[m-1];
-                arr2[m-1] = arr2[m];
-                arr2[m] = temp;
-            }
-        }
+//     }
+//     var temp = 0;
+//     for (var t = 0; t < arr2.length; t++){
+//         car[t] = arr2[t];
+//     }
+//     for (var g = 0; g < arr2.length; g++) {
+//         for (var m = arr2.length; m > 0; m--) {
+//             if (arr2[m] > arr2[m-1]) {
+//                 temp = arr2[m-1];
+//                 arr2[m-1] = arr2[m];
+//                 arr2[m] = temp;
+//             }
+//         }
         
-    }
-    return arr[car.indexOf(arr2[0])];
+//     }
+//     return arr[car.indexOf(arr2[0])];
     
     
+// }
+// console.log(higths("vala valb"));
+
+
+//patterns
+//Decorator
+// function Ball(param) {
+//     this._radius = param.radius;
+//     this._color = param.color;
+// }
+
+// Ball.prototype = {
+//     constructor: Ball, 
+//     INCREMENTATION_STEP: 5,
+//     draw : function () {
+//         console.log("ball drawn with radius:" + this._radius + " and color: " + this._color);
+//     },
+//     inc: function () {
+//         this._radius += this.INCREMENTATION_STEP;
+//     }
+// }// основной класс
+// //теперь сам паттерн
+
+// function StripedBall(ball) {
+//     this._ball = ball;
+// }
+
+// StripedBall.prototype = {
+//     constructor: StripedBall,
+//     draw: function () {
+//         this._ball.draw();
+//         console.log("and with stripes");
+//     },
+//     inc: function () {
+//         return this._ball.inc();
+//     }
+// }
+// function SpeckledBall( ball ) {
+//     this._ball = ball    
+// }
+// SpeckledBall.prototype = {
+//     constructor: SpeckledBall,
+//     draw: function() {
+//         this._ball.draw();
+//         console.log("and with dots!");
+//     },
+//     inc: function() {
+//         return this._ball.inc();
+//     }
+// }
+
+// var ball1 = new SpeckledBall(new StripedBall( new Ball ({radius: 12, color:"green"})));
+
+// function MakeStripedBall(ball) {
+//     var function_name = "draw";
+//     var prev_func = ball [function_name];
+
+//     ball[function_name] = function () {
+//         prev_func.apply(this, arguments);
+//         console.log ("and with stripes");
+//     };
+//     return ball;
+// }
+// function MakeSpeckledBall( ball )
+// {
+//     var function_name = "draw";
+//     var prev_func = ball[function_name];
+
+//     ball[function_name] = function ()
+//     {
+//         prev_func.apply(this, arguments)
+//         console.log("and with dots!");
+//     };
+
+//     return ball;
+// }
+// ball1.draw();
+// ball1.inc();
+// ball1.draw();
+// ball1.inc();
+// ball1.inc();
+// ball1.draw();
+
+// var ball3 = MakeStripedBall( MakeSpeckledBall( new Ball({ radius: 150, color: "blue" })));
+// var ball4 = MakeSpeckledBall( MakeStripedBall(new Ball({ radius: 150, color: "blue" })));
+// ball3.draw();
+// ball3.inc();
+// ball3.draw();
+
+// ball4.draw();
+
+//Factory
+
+
+var Shapes = {
+    Circle : function (param) {
+        console.log("new " + param.color + " circle created with radius " + param.radius + "px");
+    },
+    Square : function (param){
+        console.log("new " + param.color + " square created with " + param.side + "px on a side ");
+    },
+    Triangle: function (param)
+    {
+        console.log("new " + param.color + " triangle created with " + param.side + "px on a side ");
+    }
 }
-console.log(higths("vala valb"));
+
+function ShapeFactory(size, color) {
+    this.size = size;
+    this.color = color;
+}
+
+ShapeFactory.prototype = {
+    makeCircle: function () {
+        return new Shapes.Circle({radius: this.size / 2, color: this.color});
+    },
+    makeSquare: function () { return new Shapes.Square({ side: this.size, color: this.color }); },
+    makeTrinagle: function () { return new Shapes.Triangle({ side: this.size, color: this.color }); }
+}
+var factory = new ShapeFactory(60, "red")
+
+factory.makeSquare();
+factory.makeSquare();
+factory.makeTrinagle();
+factory.makeCircle();
+factory.makeTrinagle();
