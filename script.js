@@ -548,35 +548,84 @@
 //Factory
 
 
-var Shapes = {
-    Circle : function (param) {
-        console.log("new " + param.color + " circle created with radius " + param.radius + "px");
-    },
-    Square : function (param){
-        console.log("new " + param.color + " square created with " + param.side + "px on a side ");
-    },
-    Triangle: function (param)
-    {
-        console.log("new " + param.color + " triangle created with " + param.side + "px on a side ");
+// var Shapes = {
+//     Circle : function (param) {
+//         console.log("new " + param.color + " circle created with radius " + param.radius + "px");
+//     },
+//     Square : function (param){
+//         console.log("new " + param.color + " square created with " + param.side + "px on a side ");
+//     },
+//     Triangle: function (param)
+//     {
+//         console.log("new " + param.color + " triangle created with " + param.side + "px on a side ");
+//     }
+// }
+
+// function ShapeFactory(size, color) {
+//     this.size = size;
+//     this.color = color;
+// }
+
+// ShapeFactory.prototype = {
+//     makeCircle: function () {
+//         return new Shapes.Circle({radius: this.size / 2, color: this.color});
+//     },
+//     makeSquare: function () { return new Shapes.Square({ side: this.size, color: this.color }); },
+//     makeTrinagle: function () { return new Shapes.Triangle({ side: this.size, color: this.color }); }
+// }
+// var factory = new ShapeFactory(60, "red")
+
+// factory.makeSquare();
+// factory.makeSquare();
+// factory.makeTrinagle();
+// factory.makeCircle();
+// factory.makeTrinagle();
+
+// module pattern 
+
+// const HumanModule = (function (){ // создание класса по средсвом самовызывающейся функции и замыкания 
+//     var workers = [];             // массив работников 
+//     var col = 0;                  // сумма зарплаты всех работников, как таковая переменная нигде не возврпащается
+//     return {
+//         addWorker: function ( worker ) {        // метод добавляющий нового работника 
+//             col+= worker.sallary;
+//             workers.push(worker);
+//         },
+//         printWorkers: function () {             //метод выводящий на экран всех работников
+//             for (let i = 0; i < workers.length; i++) {
+//               console.log(workers[i].name, workers[i].vacancy, "age = " + workers[i].age);      
+//             }
+//         }
+//     };
+// }());
+
+// var John = {                // новый работяга, можно создавать разные такие формы
+//     name: "John",
+//     age: 23,
+//     sallary: 100,
+//     vacancy: "Manager"
+// };
+
+// HumanModule.addWorker(John);      //Вызов функции добавления работника 
+// HumanModule.printWorkers();       // Вызов функции вывода всекх работников на экран
+
+// singleton
+
+var Singleton = (function () {
+    var instance;
+    function Singleton() {
+        if (!instance) {
+            instance = this;
+        } else {
+            return instance;
+        }
     }
-}
 
-function ShapeFactory(size, color) {
-    this.size = size;
-    this.color = color;
-}
+    return Singleton;
+}());
 
-ShapeFactory.prototype = {
-    makeCircle: function () {
-        return new Shapes.Circle({radius: this.size / 2, color: this.color});
-    },
-    makeSquare: function () { return new Shapes.Square({ side: this.size, color: this.color }); },
-    makeTrinagle: function () { return new Shapes.Triangle({ side: this.size, color: this.color }); }
-}
-var factory = new ShapeFactory(60, "red")
 
-factory.makeSquare();
-factory.makeSquare();
-factory.makeTrinagle();
-factory.makeCircle();
-factory.makeTrinagle();
+var s1 = new Singleton();
+var s2 = new Singleton();
+
+console.log(s1 === s2);
