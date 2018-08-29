@@ -458,6 +458,7 @@
 // console.log(higths("vala valb"));
 
 
+<<<<<<< HEAD
 //patterns
 //Decorator
 // function Ball(param) {
@@ -629,3 +630,25 @@ var s1 = new Singleton();
 var s2 = new Singleton();
 
 console.log(s1 === s2);
+=======
+//some task
+var calculator = {
+    a : 0,
+    b: 0,
+    read: function () {
+        this.a = prompt("a?");
+        this.b = prompt("b?");
+    },
+    sum: function() {
+         alert((this.a*1) + (this.b*1));
+    },
+    mul: function () {
+        alert(this.a * this.b);
+    }
+};
+
+calculator.read();
+calculator.sum();
+calculator.mul();
+
+>>>>>>> 730a9e5d1d2b895c9d738487f31a9cc34c27f19d
